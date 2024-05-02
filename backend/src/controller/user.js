@@ -9,6 +9,15 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please enter all the mandatory field')
     }
+    var passwordValidation = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,}$/;
+    if(!password.match(passwordValidation)){
+        res.status(400)
+        throw new Error(`
+• Minimum length of 8 characters
+• Contains at least 1 letter.
+• Contains at least 1 number.
+• Contains at least 1 special character.`)
+    }
     const userAvailable = await UserModel.findOne({email})
     if(userAvailable) {
         res.status(400)
