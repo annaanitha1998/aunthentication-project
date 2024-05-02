@@ -1,17 +1,38 @@
 import { Container, Col, Row } from "react-bootstrap";
+import {
+  Route,
+  Router,
+  Routes
+} from "react-router-dom";
+
 import Register from "./component/Register";
+import Login from "./component/Login";
+import Home from "./component/Home";
 
 function App() {
   return (
     <Container>
-    <Row>
-      <Col xs={12} sm={12} md={6} lg={6}>
-        <Register />
-      </Col>
+      <Row>
+        <Col className="text-center">
+          <h1>React Authentication Tutorial</h1>
 
-      <Col xs={12} sm={12} md={6} lg={6}></Col>
-    </Row>
-  </Container>
+          <section id="navigation">
+            <a href="/">Register</a>
+            <a href="/login">Login</a>
+            <a href="/home">Home</a>
+          </section>
+        </Col>
+      </Row>
+
+
+        <Routes>
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+
+    </Container>
+
   );
 }
 
