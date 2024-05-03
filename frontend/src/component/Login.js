@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import Cookies from "universal-cookie";
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [login, setLogin] = useState(false);
+
+    const cookies = new Cookies();
 
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
@@ -25,6 +29,10 @@ export default function Login() {
         axios(configuration)
           .then((result) => {    
             console.log(result)
+            cookies.set("TOKEN", result.data.accessToken, {
+              path: "/",
+            });
+            window.location.href = "/home";
             setLogin(true);
           })
           .catch((error) => {
