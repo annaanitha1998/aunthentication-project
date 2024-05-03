@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Form, Button } from "react-bootstrap";
+import React, { useState } from 'react';
 import axios from "axios";
 
 export default function Register() {
@@ -34,54 +33,65 @@ export default function Register() {
 
 
     return (
-        <>
-            <h2>Register</h2>
-            <Form onSubmit={(e) => handleSubmit(e)}>
-                {/* username */}
-                <Form.Group controlId="formBasicName">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter Username"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </Form.Group>
+        <div className="w-1/2 p-4 mx-auto text-center border">
+            <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                Register your account
+            </h2>
+            <form className="space-y-6 mt-10" onSubmit={(e) => handleSubmit(e)}>
+                <div>
+                    <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                    <div className="mt-2">
+                        <input
+                            id="username"
+                            name="username"
+                            type="test"
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+           placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                    </div>
+                </div>
 
-                {/* email */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </Form.Group>
+                <div>
+                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                    <div className="mt-2">
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+           placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                    </div>
+                </div>
 
-                {/* password */}
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </Form.Group>
+                <div>
+                    <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                    <div className="mt-2">
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+           placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                    </div>
+                </div>
 
-                {/* submit button */}
-                <Button
-                    variant="primary"
-                    type="submit"
-                    onClick={(e) => handleSubmit(e)}
+                <div>
+                    <button type="submit"
+                        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        onClick={(e) => handleSubmit(e)}>
+                        Submit
+                    </button>
 
-                >
-                    Submit
-                </Button>
+                </div>
 
                 {/* display success message */}
                 {register ? (
@@ -89,7 +99,7 @@ export default function Register() {
                 ) : (
                     <p className="text-danger">You Are Not Registered</p>
                 )}
-            </Form>
-        </>
+            </form>
+        </div>
     )
 }
