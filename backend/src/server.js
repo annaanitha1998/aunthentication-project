@@ -2,6 +2,7 @@ const express = require('express')
 const {connectDb} = require("./database");
 const userRoute = require('./routes/user');
 const {errorHandler} = require('./utils/middleware')
+const {logger} = require('./utils/middleware')
 const cors = require('cors')
 
 const dotEnv = require('dotenv').config();
@@ -17,7 +18,7 @@ const initializeServer = async() => {
     app.use(errorHandler);
 
     app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+        logger.info(`Server running on port ${PORT}`);
       });
 }
 

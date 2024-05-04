@@ -14,7 +14,7 @@ function App() {
     <Container>
       <Row>
         <Col className="text-center">
-          <h1>React Authentication Tutorial</h1>
+          <h1>React Authentication Module</h1>
 
           <section id="navigation">
             <a href="/">Register</a>
