@@ -6,6 +6,7 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
+    const [error, setError] = useState("")
 
     const handleSubmit = (e) => {
         // prevent the form from refreshing the whole page
@@ -26,6 +27,7 @@ export default function Register() {
                 console.log(result);
             })
             .catch((error) => {
+                setError(error.response.data.message)
                 console.log(error);
             })
     }
@@ -97,7 +99,7 @@ export default function Register() {
                 {register ? (
                     <p className="text-success">You Are Registered Successfully</p>
                 ) : (
-                    <p className="text-danger">You Are Not Registered</p>
+                    <p className="text-danger">{error}</p>
                 )}
             </form>
         </div>

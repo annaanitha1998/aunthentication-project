@@ -12,11 +12,11 @@ const registerUser = asyncHandler(async (req, res) => {
     var passwordValidation = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,}$/;
     if(!password.match(passwordValidation)){
         res.status(400)
-        throw new Error(`
-• Minimum length of 8 characters
-• Contains at least 1 letter.
-• Contains at least 1 number.
-• Contains at least 1 special character.`)
+        throw new Error(`Password should satisfy the following condition
+\n • Minimum length of 8 characters
+\n • Contains at least 1 letter.
+\n • Contains at least 1 number.
+\n • Contains at least 1 special character.`)
     }
     const userAvailable = await UserModel.findOne({email})
     if(userAvailable) {
