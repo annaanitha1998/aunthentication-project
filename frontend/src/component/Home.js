@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { Button } from "react-bootstrap";
 
 export default function Home() {
     const cookies = new Cookies();
     const token = cookies.get("TOKEN");
 
     const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
     useEffect(() => {
         // set configurations for the API call here
         const configuration = {
@@ -25,25 +25,16 @@ export default function Home() {
                 setMessage(result.data.message);
             })
             .catch((error) => {
-                setMessage(error.response.data.message);
+                setError(error.response.data.message);
             });
     }, []);
 
-    const logout = () => {
-        // destroy the cookie
-        cookies.remove("TOKEN", { path: "/" });
-        // redirect user to the landing page
-        window.location.href = "/";
-      }
+
 
     return (
         <div>
             <h1 className="text-center">{message}</h1>
-
-            {/* logout */}
-            <Button type="submit" variant="danger" onClick={() => logout()}>
-                Logout
-            </Button>
+            <p className="text-danger text-center">{error}</p>
         </div>
     );
 }
